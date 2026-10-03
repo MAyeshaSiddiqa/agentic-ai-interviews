@@ -1,0 +1,13 @@
+{
+  "criteria": {
+    "tool_trajectory_avg_score": {"threshold": 1.0, "match_type": "IN_ORDER"},
+    "response_match_score": 0.7,
+    "no_unexpected_side_effects": 1.0
+  },
+  "custom_metrics": {
+    "no_unexpected_side_effects": {
+      "code_config": {"name": "evalkit.adk_trajectory_eval.metrics.no_unexpected_side_effects"},
+      "description": "Every side-effecting tool call must appear in the reference trajectory."
+    }
+  }
+}

@@ -1,0 +1,12 @@
+# Direct dependencies, pinned to the versions the reference solutions were verified against.
+# Full transitive lock: requirements-lock.txt
+google-adk[eval]==2.10.0
+google-genai==2.25.0
+langgraph==1.2.12
+langgraph-checkpoint==4.2.0
+langchain-core==1.6.6
+pydantic==2.13.5
+numpy==2.5.3
+scikit-learn==1.9.1
+pytest==9.1.1
+pytest-asyncio==1.4.0

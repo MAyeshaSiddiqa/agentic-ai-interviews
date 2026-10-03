@@ -1,0 +1,56 @@
+{
+  "eval_set_id": "refund_support_trajectories_v1",
+  "name": "Refund support: tool trajectories",
+  "description": "Status lookups, eligible refunds, and ineligible refund requests that must not trigger issue_refund.",
+  "eval_cases": [
+    {
+      "eval_id": "status_query",
+      "conversation": [
+        {
+          "invocation_id": "status-1",
+          "user_content": {"role": "user", "parts": [{"text": "Where is order A1?"}]},
+          "final_response": {"role": "model", "parts": [{"text": "Order A1 status: delivered."}]},
+          "intermediate_data": {
+            "tool_uses": [{"name": "lookup_order", "args": {"order_id": "A1"}}]
+          }
+        }
+      ],
+      "session_input": {"app_name": "refund_support", "user_id": "eval-user", "state": {}}
+    },
+    {
+      "eval_id": "refund_eligible",
+      "conversation": [
+        {
+          "invocation_id": "refund-ok-1",
+          "user_content": {"role": "user", "parts": [{"text": "Please refund order A1, it arrived broken."}]},
+          "final_response": {"role": "model", "parts": [{"text": "Refunded $25.00 for order A1."}]},
+          "intermediate_data": {
+            "tool_uses": [
+              {"name": "lookup_order", "args": {"order_id": "A1"}},
+              {"name": "check_refund_eligibility", "args": {"order_id": "A1"}},
+              {"name": "issue_refund", "args": {"order_id": "A1", "amount_usd": 25.0}}
+            ]
+          }
+        }
+      ],
+      "session_input": {"app_name": "refund_support", "user_id": "eval-user", "state": {}}
+    },
+    {
+      "eval_id": "refund_ineligible_must_not_refund",
+      "conversation": [
+        {
+          "invocation_id": "refund-no-1",
+          "user_content": {"role": "user", "parts": [{"text": "Please refund order B2."}]},
+          "final_response": {"role": "model", "parts": [{"text": "Order B2 is not eligible for a refund: outside 30-day window."}]},
+          "intermediate_data": {
+            "tool_uses": [
+              {"name": "lookup_order", "args": {"order_id": "B2"}},
+              {"name": "check_refund_eligibility", "args": {"order_id": "B2"}}
+            ]
+          }
+        }
+      ],
+      "session_input": {"app_name": "refund_support", "user_id": "eval-user", "state": {}}
+    }
+  ]
+}
