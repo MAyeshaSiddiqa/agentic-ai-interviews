@@ -1,0 +1,626 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [ 5 0 R 7 0 R 9 0 R 11 0 R 13 0 R ] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Length 2643 >>
+stream
+BT
+/F1 10 Tf
+50 790 Td
+13 TL
+(07 ? AMAN PDF QUICK-REVISION CHEATSHEET \(STAFF/SENIOR APPLIED SCIENTIST / ML ENGINEER\)) Tj
+T*
+() Tj
+T*
+(Built from: **Aman's AI Journal Interview Questions PDF**.) Tj
+T*
+(Goal: high-density review in **10?15 minutes** before interviews.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(0\) 2-minute review strategy) Tj
+T*
+() Tj
+T*
+(1. Read sections **1, 2, 5** first \(highest interview hit rate\).) Tj
+T*
+(2. Then skim **3 and 4** for depth probes.) Tj
+T*
+(3. Use section **8** for formula recall and section **9** for rapid-fire.) Tj
+T*
+(4. If you get stuck in interview: answer with **definition -> intuition -> equation -> trade-) Tj
+T*
+(off -> failure mode**.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(1\) Core ML + DL fundamentals \(must-answer cleanly\)) Tj
+T*
+() Tj
+T*
+(Bias-variance tradeoff) Tj
+T*
+(? **Bias**: underfit, high training/test error.) Tj
+T*
+(? **Variance**: overfit, low train error, high test error.) Tj
+T*
+(? Control with model capacity, regularization, data size, augmentation.) Tj
+T*
+(? Staff-level answer includes **which knob** you would turn first and why.) Tj
+T*
+() Tj
+T*
+(L1 vs L2 regularization) Tj
+T*
+(? L1 penalty: \\\(\\lambda \\sum_i |w_i|\\\) -> sparse weights, feature selection.) Tj
+T*
+(? L2 penalty: \\\(\\lambda \\sum_i w_i^2\\\) -> smooth shrinkage, stability.) Tj
+T*
+(? Use L2 as default for dense signals; L1 when sparsity/selection matters.) Tj
+T*
+() Tj
+T*
+(Why random initialization?) Tj
+T*
+(? Same initialization for all neurons in a layer -> identical gradients -> neurons remain) Tj
+T*
+(symmetric -> no diversity learned.) Tj
+T*
+(? Random init breaks symmetry and allows specialized feature learning.) Tj
+T*
+() Tj
+T*
+(Why MSE is poor for classification) Tj
+T*
+(? MSE with sigmoid can yield slow gradients in saturated regions.) Tj
+T*
+(? Cross-entropy gives stronger, better-shaped gradients for probabilistic classification.) Tj
+T*
+() Tj
+T*
+(Batch / stochastic / mini-batch GD) Tj
+T*
+(? Batch GD: stable but slow per update.) Tj
+T*
+(? SGD: noisy but can escape sharp minima/saddles.) Tj
+T*
+(? Mini-batch: practical default; best throughput and convergence balance.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(2\) Transformers / LLMs / GenAI \(very common senior probes\)) Tj
+T*
+() Tj
+T*
+(Self-attention in one line) Tj
+T*
+(? Computes context-aware token representations by weighted aggregation of all token values.) Tj
+T*
+() Tj
+T*
+(Why Q, K, V?) Tj
+T*
+(? \\\(QK^\\top\\\) computes relevance scores \(who should attend to whom\).) Tj
+T*
+(? \\\(V\\\) holds payload to aggregate.) Tj
+T*
+(? Separating \\\(K\\\) and \\\(V\\\) decouples **matching** from **content**.) Tj
+T*
+() Tj
+T*
+ET
+
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 2833 >>
+stream
+BT
+/F1 10 Tf
+50 790 Td
+13 TL
+(Attention formula) Tj
+T*
+(? \\\(\\text{Attention}\(Q,K,V\)=\\text{softmax}\\left\(\\frac{QK^\\top}{\\sqrt{d_k}}\\right\)V\\\)) Tj
+T*
+(? \\\(\\sqrt{d_k}\\\) scaling prevents large dot products from saturating softmax.) Tj
+T*
+() Tj
+T*
+(Transformer drawbacks) Tj
+T*
+(? \\\(O\(n^2\)\\\) attention cost \(memory/latency bottleneck on long context\).) Tj
+T*
+(? Data-hungry; can hallucinate; inference expensive.) Tj
+T*
+(? Mitigations: sparse/linear attention, retrieval, chunking, KV-cache optimizations.) Tj
+T*
+() Tj
+T*
+(Temperature / top-k / top-p) Tj
+T*
+(? Temperature controls sharpness of token distribution.) Tj
+T*
+(? top-k truncates to k most likely tokens.) Tj
+T*
+(? top-p \(nucleus\) truncates to smallest set with cumulative prob >= p.) Tj
+T*
+(? Higher values => more diversity, less determinism.) Tj
+T*
+() Tj
+T*
+(Why same prompt can produce different outputs) Tj
+T*
+(? Sampling randomness + temperature/top-k/top-p + seed differences + backend nondeterminism.) Tj
+T*
+(? At near-zero temperature and fixed seed, outputs are more reproducible.) Tj
+T*
+() Tj
+T*
+(DDPM vs DDIM) Tj
+T*
+(? DDPM: stochastic reverse process; more diverse, slower sampling.) Tj
+T*
+(? DDIM: deterministic/implicit trajectory; faster sampling, often less diversity.) Tj
+T*
+() Tj
+T*
+(GAN mode collapse) Tj
+T*
+(? Generator maps many latent points to limited outputs \(low diversity\).) Tj
+T*
+(? Mitigate with improved objectives \(WGAN-GP\), minibatch discrimination, better D/G balance.) Tj
+T*
+() Tj
+T*
+(RLHF at high level) Tj
+T*
+(? SFT -> preference data -> reward model -> PPO/DPO-style optimization.) Tj
+T*
+(? Key risk: reward hacking / alignment tax / preference noise.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(3\) Training pathologies + debugging checklist) Tj
+T*
+() Tj
+T*
+(Overfitting mitigation stack \(in order\)) Tj
+T*
+(1. Data quality + leakage check.) Tj
+T*
+(2. Train/val split sanity \(no overlap, proper time split if needed\).) Tj
+T*
+(3. Regularization \(weight decay, dropout, label smoothing\).) Tj
+T*
+(4. Early stopping + learning-rate schedule.) Tj
+T*
+(5. Augmentation / more data.) Tj
+T*
+(6. Reduce model capacity or freeze lower layers in fine-tuning.) Tj
+T*
+() Tj
+T*
+(Vanishing gradients) Tj
+T*
+(? Deep nets with saturating activations or poor initialization can lose gradient signal.) Tj
+T*
+(? Fixes: ReLU-family activations, residual connections, normalization, careful initialization.) Tj
+T*
+() Tj
+T*
+(Batch norm: why it helps) Tj
+T*
+(? Stabilizes optimization landscape and gradient flow.) Tj
+T*
+(? Enables larger learning rates and faster convergence.) Tj
+T*
+() Tj
+T*
+(Validation loss up while accuracy up) Tj
+T*
+(? Possible when confidence calibration worsens: more correct labels but overconfident wrong) Tj
+T*
+(predictions inflate log loss.) Tj
+T*
+() Tj
+T*
+(If test performance underperforms) Tj
+T*
+ET
+
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2517 >>
+stream
+BT
+/F1 10 Tf
+50 790 Td
+13 TL
+(? Check: leakage, distribution shift, label noise, class imbalance, metric mismatch,) Tj
+T*
+(insufficient hyperparameter search, data preprocessing mismatch.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(4\) Classical ML, stats, probability \(still asked frequently\)) Tj
+T*
+() Tj
+T*
+(Pearson vs Spearman) Tj
+T*
+(? Pearson: linear correlation on raw values.) Tj
+T*
+(? Spearman: rank correlation \(monotonic relationships, robust to outliers/non-normality\).) Tj
+T*
+() Tj
+T*
+(CLT use case) Tj
+T*
+(? Means/sums of many independent samples approximate normal; allows confidence intervals/tests) Tj
+T*
+(even if raw data non-normal \(with caveats\).) Tj
+T*
+() Tj
+T*
+(Cross-validation) Tj
+T*
+(? Estimates generalization robustly on small/medium datasets.) Tj
+T*
+(? Use **stratified** for imbalance, **grouped/time-series CV** when IID assumption breaks.) Tj
+T*
+() Tj
+T*
+(Random forest vs gradient boosting) Tj
+T*
+(? RF: bagging, parallel trees, variance reduction, robust baseline.) Tj
+T*
+(? GBM/XGBoost: sequential residual fitting, lower bias, often better accuracy, more tuning-) Tj
+T*
+(sensitive.) Tj
+T*
+() Tj
+T*
+(K-means convergence nuance) Tj
+T*
+(? Objective \(within-cluster SSE\) monotonically decreases; converges to a **local** optimum.) Tj
+T*
+(? Not guaranteed unique/global optimum; sensitive to initialization.) Tj
+T*
+() Tj
+T*
+(Imbalanced classes) Tj
+T*
+(? Use class weights, focal loss, threshold tuning, resampling, PR-AUC/F1/recall@precision) Tj
+T*
+(targets.) Tj
+T*
+(? Avoid reporting accuracy alone.) Tj
+T*
+() Tj
+T*
+(Long-tail data) Tj
+T*
+(? Majority classes dominate gradients.) Tj
+T*
+(? Use reweighting, resampling, decoupled head training, focal/class-balanced losses.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(5\) Experimentation and decision quality \(staff differentiator\)) Tj
+T*
+() Tj
+T*
+(A/B testing pitfalls) Tj
+T*
+(? Sample ratio mismatch, peeking, multiple comparisons, novelty effects, interference between) Tj
+T*
+(users.) Tj
+T*
+(? Staff answer includes pre-registered metrics + guardrails + stopping rule.) Tj
+T*
+() Tj
+T*
+(P-value in plain language) Tj
+T*
+(? Probability of observing data this extreme \(or more\) **assuming null is true**.) Tj
+T*
+(? Not the probability that null is true.) Tj
+T*
+() Tj
+T*
+(Metric selection) Tj
+T*
+(? Match metric to business objective and failure costs.) Tj
+T*
+(? Track primary metric + guardrails \(latency, safety, fairness, cost\).) Tj
+T*
+() Tj
+T*
+(Selection bias) Tj
+T*
+(? Data collection process distorts representativeness.) Tj
+T*
+ET
+
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 2516 >>
+stream
+BT
+/F1 10 Tf
+50 790 Td
+13 TL
+(? Fix with better sampling design, randomization, stratification, and post-stratification) Tj
+T*
+(checks.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(6\) Applied ML engineer/system view \(what senior loops test\)) Tj
+T*
+() Tj
+T*
+(On-device deployment) Tj
+T*
+(? Optimize with quantization, pruning, distillation, operator fusion, batching policy.) Tj
+T*
+(? Track latency p95/p99, memory footprint, thermal/power constraints.) Tj
+T*
+() Tj
+T*
+(Distribution shift) Tj
+T*
+(? Types: covariate shift, label shift, concept drift.) Tj
+T*
+(? Build drift monitors + retraining triggers + rollback plan.) Tj
+T*
+() Tj
+T*
+(Uncertainty for regression) Tj
+T*
+(? Aleatoric \(data noise\) vs epistemic \(model uncertainty\).) Tj
+T*
+(? Methods: quantile regression, ensembling/MC dropout, conformal prediction.) Tj
+T*
+() Tj
+T*
+(Hallucination mitigation) Tj
+T*
+(? Retrieval grounding, constrained decoding, tool verification, abstain option, self-) Tj
+T*
+(consistency with verifier.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(7\) SQL/Python coding mini-cheats) Tj
+T*
+() Tj
+T*
+(SQL order of execution \(logical\)) Tj
+T*
+(`FROM -> JOIN -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY -> LIMIT`) Tj
+T*
+() Tj
+T*
+(Common SQL gotchas) Tj
+T*
+(? `WHERE` filters rows pre-aggregation; `HAVING` filters groups post-aggregation.) Tj
+T*
+(? `BETWEEN` is inclusive; `IN` matches set membership.) Tj
+T*
+(? Prefer explicit joins over comma joins.) Tj
+T*
+() Tj
+T*
+(Python quick reminders) Tj
+T*
+(? `list`: mutable; `tuple`: immutable/hashable \(if elements hashable\).) Tj
+T*
+(? For set operations/intersection at scale, convert to `set` first.) Tj
+T*
+(? For duplicates: hash map / `collections.Counter` / sort+scan.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(8\) Formula flashcards \(memorize\)) Tj
+T*
+() Tj
+T*
+(? **Cross-entropy \(binary\)**: \\\(-[y\\log p + \(1-y\)\\log\(1-p\)]\\\)) Tj
+T*
+(? **L2-regularized loss**: \\\(L = L_{\\text{data}} + \\lambda\\sum_i w_i^2\\\)) Tj
+T*
+(? **L1-regularized loss**: \\\(L = L_{\\text{data}} + \\lambda\\sum_i |w_i|\\\)) Tj
+T*
+(? **Softmax**: \\\(\\sigma\(z_i\)=\\frac{e^{z_i}}{\\sum_j e^{z_j}}\\\)) Tj
+T*
+(? **Bayes rule**: \\\(P\(A|B\)=\\frac{P\(B|A\)P\(A\)}{P\(B\)}\\\)) Tj
+T*
+(? **Precision**: \\\(TP/\(TP+FP\)\\\)) Tj
+T*
+(? **Recall**: \\\(TP/\(TP+FN\)\\\)) Tj
+T*
+(? **F1**: \\\(2PR/\(P+R\)\\\)) Tj
+T*
+(? **Attention**: \\\(\\text{softmax}\(QK^\\top/\\sqrt{d_k}\)V\\\)) Tj
+T*
+(? **K-means objective**: \\\(\\sum_k\\sum_{x_i\\in C_k}\\|x_i-\\mu_k\\|^2\\\)) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+ET
+
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 2198 >>
+stream
+BT
+/F1 10 Tf
+50 790 Td
+13 TL
+() Tj
+T*
+(9\) Rapid-fire \(speak each in <=20 seconds\)) Tj
+T*
+() Tj
+T*
+(1. Why random initialization? -> symmetry breaking.) Tj
+T*
+(2. Why mini-batch over full batch? -> throughput + stable enough gradients.) Tj
+T*
+(3. Pearson vs Spearman? -> linear vs rank-monotonic.) Tj
+T*
+(4. Why CE over MSE for classification? -> better gradients/probabilistic fit.) Tj
+T*
+(5. What is overfitting? -> memorization; poor generalization.) Tj
+T*
+(6. How to detect leakage? -> implausibly high CV, feature availability audit, time-based) Tj
+T*
+(holdout.) Tj
+T*
+(7. Random forest vs boosting? -> variance reduction vs bias reduction.) Tj
+T*
+(8. Why Q/K/V? -> relevance scoring separated from value aggregation.) Tj
+T*
+(9. Why transformer expensive? -> quadratic attention.) Tj
+T*
+(10. Why outputs vary for same prompt? -> sampling/randomness/backend nondeterminism.) Tj
+T*
+(11. What is mode collapse? -> generator loses diversity.) Tj
+T*
+(12. What is focal loss doing? -> downweights easy examples, focuses hard/minority samples.) Tj
+T*
+(13. K-means guaranteed global optimum? -> no, local optimum.) Tj
+T*
+(14. What is label smoothing? -> reduce overconfidence, improve calibration.) Tj
+T*
+(15. What is CLT and why useful? -> sampling mean approx normal for inference.) Tj
+T*
+(16. What is selection bias? -> non-representative sampling; invalid conclusions.) Tj
+T*
+(17. What is batch norm benefit? -> stabilizes and speeds training.) Tj
+T*
+(18. What is concept drift? -> \\\(P\(y|x\)\\\) changes over time.) Tj
+T*
+(19. How to choose eval metric under imbalance? -> PR-AUC/recall@precision + business-cost) Tj
+T*
+(thresholds.) Tj
+T*
+(20. Staff-level escalation trigger? -> when metric gain conflicts with safety/cost/latency) Tj
+T*
+(guardrails.) Tj
+T*
+() Tj
+T*
+(---) Tj
+T*
+() Tj
+T*
+(10\) 30-second staff answer template \(use for any hard question\)) Tj
+T*
+() Tj
+T*
+(1. **Define** the concept precisely.) Tj
+T*
+(2. Give **one intuition/example**.) Tj
+T*
+(3. Add **one equation/metric**.) Tj
+T*
+(4. State **trade-offs** and failure modes.) Tj
+T*
+(5. End with **how you'd validate** in production.) Tj
+T*
+() Tj
+T*
+(This format avoids rambling and signals senior depth quickly.) Tj
+T*
+ET
+
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 12 0 R >>
+endobj
+xref
+0 14
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000149 00000 n 
+0000000219 00000 n 
+0000002914 00000 n 
+0000003040 00000 n 
+0000005925 00000 n 
+0000006051 00000 n 
+0000008620 00000 n 
+0000008746 00000 n 
+0000011315 00000 n 
+0000011443 00000 n 
+0000013694 00000 n 
+trailer
+<< /Size 14 /Root 1 0 R >>
+startxref
+13822
+%%EOF
